@@ -12,7 +12,7 @@ apt-get install -y \
 	git \
 	tmux 
 
-dconf load /com/gexperts/Tilix/ < terminix.dconf
+#dconf load /com/gexperts/Tilix/ < terminix.dconf
 
 # Snap install
 snap install -y \
@@ -20,6 +20,9 @@ snap install -y \
 	spotify \
 	discord
 
+# Setup Git
+git config --global user.name "your-name"
+git config --global user.email "your-email@here"
 
 # Tweak Settings
 add-apt-repository universe
@@ -41,36 +44,28 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 
 #Installation 
 
-sudo apt update
+apt update
 
-# Install noetic Full
-sudo apt install -y ros-noetic-desktop-full
+# Install noetic Full , Husky and dependencies 
+sudo apt install -y \
+	ros-noetic-desktop-full \
+	python3-rosdep \
+	python3-rosinstall \
+	python3-rosinstall-generator \
+	python3-wstool \
+	build-essential \
+	ros-noetic-husky-desktop \
+	ros-noetic-husky-simulator
 
 # Source to bash
 source /opt/ros/noetic/setup.bash
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
-# Insatll dependencies 
-sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-
 sudo rosdep init
 rosdep update
 
-
-# Setup Git
-git config --global user.name "your-name"
-git config --global user.email "your-email@here"
-
-
-# Install Husky
-apt-get update
-
-apt-get install -y \
-	ros-noetic-husky-desktop \
-	ros-noetic-husky-simulator
-
 export HUSKY_GAZEBO_DESCRIPTION=$(rospack find husky_gazebo)/urdf/description.gazebo.xacro
 
-# Pip installs
+# Pip usefull lib
 pip install -y virtualenv
