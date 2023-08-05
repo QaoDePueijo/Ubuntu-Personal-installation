@@ -32,17 +32,19 @@ apt install -y gnome-tweak-tool
 
 apt install -y $(apt search gnome-shell-extension | grep ^gnome | cut -d / -f1)
 
+# Pip usefull lib
+pip install -y virtualenv
 
 
-#install ROS Noetic
+#Installation Work essencial 
+
+# Install ROS Noetic
 # Setup Source List
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 # Setup Key
 sudo apt install -y curl # if you haven't already installed curl
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-
-#Installation 
 
 apt update
 
@@ -67,5 +69,3 @@ rosdep update
 
 export HUSKY_GAZEBO_DESCRIPTION=$(rospack find husky_gazebo)/urdf/description.gazebo.xacro
 
-# Pip usefull lib
-pip install -y virtualenv
