@@ -7,6 +7,8 @@ apt upgrade
 apt-get install -y \
 	tilix \
 	python3-catkin-tools \
+	python3-pip \
+	python3-virtualenv \
 	git \
 	tmux 
 
@@ -15,7 +17,8 @@ dconf load /com/gexperts/Tilix/ < terminix.dconf
 # Snap install
 snap install -y \
 	--classic code \
-	spotify
+	spotify \
+	discord
 
 
 # Tweak Settings
@@ -51,9 +54,6 @@ source ~/.bashrc
 # Insatll dependencies 
 sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
-# Init Rosdep
-sudo apt install -y python3-rosdep
-
 sudo rosdep init
 rosdep update
 
@@ -72,4 +72,5 @@ apt-get install -y \
 
 export HUSKY_GAZEBO_DESCRIPTION=$(rospack find husky_gazebo)/urdf/description.gazebo.xacro
 
-
+# Pip installs
+pip install -y virtualenv
