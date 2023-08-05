@@ -59,8 +59,8 @@ rosdep update
 
 
 # Setup Git
-git config --global user.name "lucas"
-git config --global user.email "lucas@ingeniarius.pt"
+git config --global user.name "your-name"
+git config --global user.email "your-email@here"
 
 
 # Install Husky
